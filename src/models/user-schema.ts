@@ -28,6 +28,10 @@ const UserSchema = new Schema({
     type: Number,
     required: true,
   },
+  cart: {
+    type: Array,
+    default: [],
+  },
 });
 
 const User = model("User", UserSchema);
