@@ -2,6 +2,7 @@ import express, { Request, Response, json } from "express";
 import dotenv from "dotenv";
 import router from "./routes";
 import mongoose from "mongoose";
+import cors from "cors";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ try {
 const app = express();
 
 app.use(json());
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Hello, this is root for HaloBuku API");
