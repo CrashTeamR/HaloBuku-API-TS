@@ -62,15 +62,15 @@ To start local environment run `yarn dev`
 
 ```js
 {
-  "_id": Number,
-  "title": String,
-  "author": String,
-  "publishedYear": Number,
-  "description": String,
-  "image": String,
-  "price": Number,
-  "quantity": Number,
-  "isAvailable": Boolean
+  _id: Number,
+  title: String,
+  author: String,
+  publishedYear: Number,
+  description: String,
+  image: String,
+  price: Number,
+  quantity: Number,
+  isAvailable: Boolean
 }
 ```
 
