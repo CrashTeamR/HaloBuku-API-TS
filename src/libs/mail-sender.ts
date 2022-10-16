@@ -4,15 +4,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-declare const process: {
-  env: {
-    MAIL_HOST: string;
-    MAIL_EMAIL: string;
-    MAIL_PASS: string;
-    MAIL_PORT: number;
-  };
-};
-
 type Params = {
   to: Mail.Address;
   otp: Number;

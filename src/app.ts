@@ -5,14 +5,8 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
-declare const process: {
-  env: {
-    DB_URI: string;
-  };
-};
-
 try {
-  mongoose.connect(process.env.DB_URI, () => {
+  mongoose.connect(process.env.DB_URI!, () => {
     console.log("connected to database");
   });
 } catch (error) {

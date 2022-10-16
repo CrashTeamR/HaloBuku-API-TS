@@ -4,12 +4,6 @@ import sendMail from "../libs/mail-sender";
 import User from "../models/user-schema";
 import { Response, Request } from "express";
 
-declare const process: {
-  env: {
-    SECRET_KEY: string;
-  };
-};
-
 const register = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
   const isExist = await User.findOne({ email });
@@ -77,22 +71,23 @@ const login = async (req: Request, res: Response) => {
 
     const validPassword = await compare(password, user?.password!);
 
-    if (!validPassword) res.status(400).json({ message: "Wrong Password!" });
+    if (!validPassword)
+      return res.status(400).json({ message: "Wrong Password!" });
 
     if (!user.verified)
       res.status(401).json({ message: "Email is not verified!" });
 
-    const userToken = sign(
+    const token = sign(
       {
         _id: user._id,
         name: user.name,
         role: user.role,
       },
-      process.env.SECRET_KEY,
+      process.env.SECRET_KEY!,
       { expiresIn: "2h" }
     );
 
-    return res.status(200).json({ userToken });
+    return res.status(200).json({ token });
   } catch (error) {
     res.status(400).json({ error });
   }
