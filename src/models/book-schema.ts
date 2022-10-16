@@ -21,6 +21,9 @@ const BookSchema = new Schema({
     type: String,
     default: "unknown",
   },
+  image: {
+    type: String,
+  },
   price: {
     type: Number,
     default: 0,
