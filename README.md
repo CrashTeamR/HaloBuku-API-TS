@@ -74,9 +74,9 @@ To start local environment run `yarn dev`
 }
 ```
 
-#### Get All Books
+#### Get Book by ID
 
-> https://halobuku.ericprd.site/api/v1/books
+> https://halobuku.ericprd.site/api/v1/books/:id
 
 - method: `GET`
 - body:
@@ -108,17 +108,69 @@ To start local environment run `yarn dev`
 
 ```js
 {
-  book: {
-    _id: Number,
-    title: String,
-    author: String,
-    publishedYear: Number,
-    description: String,
-    image: String,
-    price: Number,
-    quantity: Number,
-    isAvailable: Boolean
-  }
+  books: [
+    {
+      _id: Number,
+      title: String,
+      author: String,
+      publishedYear: Number,
+      description: String,
+      image: String,
+      price: Number,
+      quantity: Number,
+      isAvailable: Boolean,
+    },
+  ];
 }
-
 ```
+
+#### Delete Book by ID (Auth)
+
+> https://halobuku.ericprd.site/api/v1/books/:id
+
+- method: `DELETE`
+- parameter is book's ID
+
+### Cart
+
+#### Get Cart
+
+> https://halobuku.ericprd.site/api/v1/cart
+
+- method: `GET`
+- cart:
+
+```js
+{
+  _id: String;
+  cart: [
+    {
+      _id: Number,
+      title: String,
+      author: String,
+      publishedYear: Number,
+      description: String,
+      image: String,
+      price: Number,
+      quantity: Number,
+      isAvailable: Boolean,
+    },
+  ];
+}
+```
+
+#### Add to Cart
+
+> https://halobuku.ericprd.site/api/v1/cart/:id
+
+- method: `POST`
+- parameter is book's ID
+
+#### Remove from Cart
+
+> https://halobuku.ericprd.site/api/v1/cart/:id
+
+- method: `DELETE`
+- parameter is book's ID
+
+`note: cart only can be accessed by auth user`
