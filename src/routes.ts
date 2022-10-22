@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authController from "./controllers/auth-controllers";
 import bookContollers from "./controllers/book-controller";
+import cartControllers from "./controllers/cart-controllers";
 import verifyToken from "./libs/verify-token";
 
 const router = Router();
@@ -12,5 +13,8 @@ router.post("/login", authController.login);
 router.post("/books", verifyToken, bookContollers.addBook);
 router.get("/books", bookContollers.getAllBooks);
 router.get("/books/:id", bookContollers.getBookById);
+router.delete("/books/:id", bookContollers.deleteBookById);
+
+router.get("/cart", verifyToken, cartControllers.getCart);
 
 export default router;

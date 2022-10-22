@@ -64,10 +64,25 @@ const getBookById = async (req: Request, res: Response) => {
   }
 };
 
+const deleteBookById = async (req: Request, res: Response) => {
+  const _id = req.params.id;
+
+  try {
+    const book = await Book.findByIdAndDelete({ _id: _id });
+
+    if (book) {
+      return res.status(200).json({ message: "Delete success" });
+    }
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
 const bookContollers = {
   addBook,
   getAllBooks,
   getBookById,
+  deleteBookById,
 };
 
 export default bookContollers;
