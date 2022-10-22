@@ -6,6 +6,8 @@ import cors from "cors";
 
 dotenv.config();
 
+const PORT = 5000;
+
 try {
   mongoose.connect(process.env.DB_URI!, () => {
     console.log("connected to database");
@@ -24,8 +26,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/v1/", router);
 
-app.listen(5500, () => {
-  console.log("http://localhost:5500");
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 });
 
 export default app;

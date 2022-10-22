@@ -66,6 +66,8 @@ const getBookById = async (req: Request, res: Response) => {
 
 const deleteBookById = async (req: Request, res: Response) => {
   const _id = req.params.id;
+  if (req.app.locals.user.role !== "admin")
+    return res.status(401).json({ message: "Only admin can delete books" });
 
   try {
     const book = await Book.findByIdAndDelete({ _id: _id });
