@@ -4,7 +4,7 @@ import Cart from "../models/cart-schema";
 
 const getCart = async (req: Request, res: Response) => {
   const { _id } = req.app.locals.user;
-  const userCart = await Cart.findOne({ userId: _id });
+  const userCart = await Cart.findOne({ _id: _id });
 
   res.json(userCart);
 };
