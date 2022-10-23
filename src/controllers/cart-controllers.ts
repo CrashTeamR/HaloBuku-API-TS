@@ -18,7 +18,7 @@ const addToCart = async (req: Request, res: Response) => {
     const userCart = await Cart.findOne({ _id });
 
     if (userCart) {
-      await Cart.updateOne({ userId: _id }, { $push: { books: book } });
+      await Cart.updateOne({ _id: _id }, { $push: { books: book } });
     } else {
       await Cart.create({ _id, books: book });
     }
